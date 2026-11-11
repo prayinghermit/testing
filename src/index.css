@@ -1,1 +1,100 @@
 @import "tailwindcss";
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a6a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a6a8a;
+}
+
+/* Smooth animations */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Game-specific animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(217, 164, 6, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(217, 164, 6, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.building-ready {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.notification-enter {
+  animation: float 0.3s ease-out;
+}
+
+/* Grid cell hover effect */
+.grid-cell:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Building hover */
+.building-hover:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+  transition: all 0.15s ease;
+}
+
+/* Selection highlight */
+@keyframes selection-pulse {
+  0%, 100% { border-color: rgba(217, 164, 6, 0.8); }
+  50% { border-color: rgba(217, 164, 6, 0.4); }
+}
+
+.selected-building {
+  animation: selection-pulse 1.5s ease-in-out infinite;
+}
+
+/* Prevent text selection during drag */
+.select-none * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .building-btn {
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  background: #1f2937;
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #e5e7eb;
+  z-index: 100;
+  pointer-events: none;
+  max-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 1s linear;
+}
